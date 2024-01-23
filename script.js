@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   if (Math.floor(Math.random() * 3) == 0) return "rock";
   else if (Math.floor(Math.random() * 3) == 1) return "paper";
@@ -19,4 +22,55 @@ function playRound(playerSelection, computerSelection) {
   else if (player == "scissors" && computerSelection == "rock")
     return "You Lose! Rock beats Scissors";
   else return "It's a tie!";
+}
+
+function game() {
+  let playerSelection = prompt("Rock, Paper or Scissors?");
+  let computerSelection = getComputerChoice();
+  let result = playRound(playerSelection, computerSelection);
+  updateScore(result);
+  console.log(result);
+  playerSelection = prompt("Rock, Paper or Scissors?");
+  computerSelection = getComputerChoice();
+  result = playRound(playerSelection, computerSelection);
+  updateScore(result);
+  console.log(result);
+  playerSelection = prompt("Rock, Paper or Scissors?");
+  computerSelection = getComputerChoice();
+  result = playRound(playerSelection, computerSelection);
+  updateScore(result);
+  console.log(result);
+  playerSelection = prompt("Rock, Paper or Scissors?");
+  computerSelection = getComputerChoice();
+  result = playRound(playerSelection, computerSelection);
+  updateScore(result);
+  console.log(result);
+  playerSelection = prompt("Rock, Paper or Scissors?");
+  computerSelection = getComputerChoice();
+  result = playRound(playerSelection, computerSelection);
+  updateScore(result);
+  console.log(result);
+  determineWinner();
+}
+game();
+
+function updateScore(result) {
+  if (result.charAt(4) === "W") playerScore++;
+  else if (result.charAt(4) === "L") computerScore++;
+}
+
+function determineWinner() {
+  if (playerScore > computerScore) {
+    console.log(
+      `You won!
+Your score: ${playerScore}           Computer Score: ${computerScore}`
+    );
+  } else if (computerScore > playerScore) {
+    console.log(
+      `You lose! Better luck next time.
+Your score: ${playerScore}           Computer score: ${computerScore}`
+    );
+  } else {
+    
+  }
 }
