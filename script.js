@@ -55,8 +55,8 @@ function game() {
 game();
 
 function updateScore(result) {
-  if (result.charAt(4) === "W") playerScore++;
-  else if (result.charAt(4) === "L") computerScore++;
+  if (result.includes("Win")) playerScore++;
+  else if (result.includes("Lose")) computerScore++;
 }
 
 function determineWinner() {
@@ -71,6 +71,6 @@ Your score: ${playerScore}           Computer Score: ${computerScore}`
 Your score: ${playerScore}           Computer score: ${computerScore}`
     );
   } else {
-    
+    console.log("Its a tie!");
   }
 }
