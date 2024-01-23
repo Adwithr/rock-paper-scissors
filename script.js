@@ -52,7 +52,6 @@ function game() {
   console.log(result);
   determineWinner();
 }
-game();
 
 function updateScore(result) {
   if (result.includes("Win")) playerScore++;
@@ -74,3 +73,6 @@ Your score: ${playerScore}           Computer score: ${computerScore}`
     console.log("Its a tie!");
   }
 }
+
+const button = document.getElementById("mybutton");
+button.addEventListener("click", game);
