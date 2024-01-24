@@ -55,4 +55,11 @@ Your score: ${playerScore}           Computer score: ${computerScore}`
 }
 
 const button = document.getElementById("mybutton");
-button.addEventListener("click", game);
+button.addEventListener("click", newGame);
+
+function newGame() {
+  console.clear();
+  playerScore = 0;
+  computerScore = 0;
+  game();
+}
