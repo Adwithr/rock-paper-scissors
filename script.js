@@ -23,32 +23,26 @@ function playRound(playerSelection, computerSelection) {
   else return "It's a tie!";
 }
 
-// function game() {
-//   for (let roundsPlayed = 0; roundsPlayed < 5; roundsPlayed++) {
-//     let playerSelection = prompt("Rock Paper or Scissors?");
-//     let computerSelection = getComputerChoice();
-//     let result = playRound(playerSelection, computerSelection);
-//     updateScore(result);
-//     console.log(result);
-//   }
-//   determineWinner();
-// }
+function game(player) {
+  let playerSelection = player;
+  let computerSelection = getComputerChoice();
+  let result = playRound(playerSelection, computerSelection);
+  updateScore(result);
+  if (playerScore === 5 || computerScore === 5) determineWinner();
+}
 
 function updateScore(result) {
   if (result.includes("Win")) playerScore++;
   else if (result.includes("Lose")) computerScore++;
+  let p = document.querySelector("p");
+  p.textContent = `Player Score: ${playerScore} - Computer Score: ${computerScore}`;
 }
 
 function determineWinner() {
-  if (playerScore > computerScore)
-    console.log(
-      `You won!
-Your score: ${playerScore}           Computer Score: ${computerScore}`
-    );
-  else if (computerScore > playerScore)
-    console.log(
-      `You lose! Better luck next time.
-Your score: ${playerScore}           Computer score: ${computerScore}`
-    );
-  else console.log("Its a tie!");
+  let winner = document.querySelector("#result");
+  if (playerScore > computerScore) {
+    winner.textContent = `You Win!!
+Your Score: ${playerScore}
+Computer Score: ${computerScore}`;
+  }
 }
