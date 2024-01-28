@@ -24,10 +24,12 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game(player) {
+  let roundResult = document.querySelector("#roundResult");
   let playerSelection = player;
   let computerSelection = getComputerChoice();
   let result = playRound(playerSelection, computerSelection);
   updateScore(result);
+  roundResult.textContent = result;
   if (playerScore === 5 || computerScore === 5) determineWinner();
 }
 
@@ -40,9 +42,27 @@ function updateScore(result) {
 
 function determineWinner() {
   let winner = document.querySelector("#result");
+  let playerResult = document.querySelector(".playerResult");
+  let compResult = document.querySelector(".compResult");
+  let btn = document.querySelectorAll("button");
+  btn.forEach((button) => {
+    button.disabled = true;
+  });
   if (playerScore > computerScore) {
-    winner.textContent = `You Win!!
-Your Score: ${playerScore}
-Computer Score: ${computerScore}`;
+    winner.textContent = `You Win!!`;
+    winner.style.color = "#0ab30a";
+    playerResult.textContent = `Your Score: ${playerScore}`;
+    compResult.textContent = `Computer Score: ${computerScore}`;
+  } else if (computerScore > playerScore) {
+    winner.textContent = `You Lose!!`;
+    winner.style.color = "red";
+    playerResult.textContent = `Your Score: ${playerScore}`;
+    compResult.textContent = `Computer Score: ${computerScore}`;
+  } else {
+    winner.textContent = `It's a Tie!!`;
+    playerResult.textContent = `Your Score: ${playerScore}`;
+    compResult.textContent = `Computer Score: ${computerScore}`;
   }
+  playerScore = 0;
+  computerScore = 0;
 }
