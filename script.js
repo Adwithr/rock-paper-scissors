@@ -8,32 +8,31 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  player = playerSelection.toLowerCase();
-  if (player === "rock" && computerSelection === "paper")
+  if (playerSelection === "rock" && computerSelection === "paper")
     return "You Lose! Paper beats Rock";
-  else if (player === "rock" && computerSelection === "scissors")
+  else if (playerSelection === "rock" && computerSelection === "scissors")
     return "You Win! Rock beats Scissors";
-  else if (player === "paper" && computerSelection === "rock")
+  else if (playerSelection === "paper" && computerSelection === "rock")
     return "You Win! Paper beats Rock";
-  else if (player === "paper" && computerSelection === "scissors")
+  else if (playerSelection === "paper" && computerSelection === "scissors")
     return "You Lose! Scissors beats Paper";
-  else if (player === "scissors" && computerSelection === "paper")
+  else if (playerSelection === "scissors" && computerSelection === "paper")
     return "You Win! Scissors beats Paper";
-  else if (player === "scissors" && computerSelection === "rock")
+  else if (playerSelection === "scissors" && computerSelection === "rock")
     return "You Lose! Rock beats Scissors";
   else return "It's a tie!";
 }
 
-function game() {
-  for (let roundsPlayed = 0; roundsPlayed < 5; roundsPlayed++) {
-    let playerSelection = prompt("Rock Paper or Scissors?");
-    let computerSelection = getComputerChoice();
-    let result = playRound(playerSelection, computerSelection);
-    updateScore(result);
-    console.log(result);
-  }
-  determineWinner();
-}
+// function game() {
+//   for (let roundsPlayed = 0; roundsPlayed < 5; roundsPlayed++) {
+//     let playerSelection = prompt("Rock Paper or Scissors?");
+//     let computerSelection = getComputerChoice();
+//     let result = playRound(playerSelection, computerSelection);
+//     updateScore(result);
+//     console.log(result);
+//   }
+//   determineWinner();
+// }
 
 function updateScore(result) {
   if (result.includes("Win")) playerScore++;
@@ -52,14 +51,4 @@ Your score: ${playerScore}           Computer Score: ${computerScore}`
 Your score: ${playerScore}           Computer score: ${computerScore}`
     );
   else console.log("Its a tie!");
-}
-
-const button = document.getElementById("mybutton");
-button.addEventListener("click", newGame);
-
-function newGame() {
-  console.clear();
-  playerScore = 0;
-  computerScore = 0;
-  game();
 }
